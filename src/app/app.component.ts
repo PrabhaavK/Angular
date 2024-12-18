@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TemplateDrivenForm';
+user: any;
+  Submit(user:any)
+{
+  console.log(user.value);
+  console.log(this.user);
+}
 }

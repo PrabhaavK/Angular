@@ -1,0 +1,44 @@
+<p>templete-form works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <form #user="ngForm" (ngSubmit)="onSubmit(user)">
+        <div class="form-group">
+          <label for="id">Id</label>
+          <input type="number" #id="ngModel" name="id" class="form-control" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input type="text" #firstname="ngModel" required minlength="3" maxlength="12" name="firstname" class="form-control" ngModel>
+          <div *ngIf="firstname.touched && firstname.invalid" class = "alert alert-danger" >
+            <p *ngIf="firstname.hasError('required')">First name is required</p>
+            <p *ngIf="firstname.hasError('minlength')">First name must be at least 3 characters></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" #lastname="ngModel" required minlength="3" maxlength="12" name="lastname" class="form-control" ngModel>
+          <div *ngIf="lastname.touched && lastname.invalid" class = "alert alert-danger" >
+            <p *ngIf="lastname.hasError('required')">Last name is required</p>
+            <p *ngIf="lastname.hasError('minlength')">last name must be at least 3 characters></p>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<p>
+  {{user.value | json}}
+  <tr>
+  <tr>
+  1.  Touched: {{firstname.touched |json}}
+  <tr>
+  2.  Dirty:  {{firstname.dirty |json}}
+  <tr>
+  3.   Pristine: {{firstname.pristine |json}}
+  <tr>
+  4.    Valid:  {{firstname.valid |json}}
+  </p>
